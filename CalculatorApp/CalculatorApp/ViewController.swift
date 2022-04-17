@@ -11,28 +11,14 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var numberLabel: UILabel!
 
-    var isNewOperation = true
-    var isInteger = true
-    var operations = ""
-    var isWholeNumber: Int?
-    var firstNumber: Double?
-    var secondNumber: Double?
-    var result: Double?
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     private func addNumberToInput(number: String) {
-        var numberText = String(numberLabel.text!)
-
-        if isNewOperation {
-            numberText = ""
-            isNewOperation = false
-        }
-
-        numberText = numberText + number
-        numberLabel.text = String(numberText)
+        var firstNumber = String(numberLabel.text!)
+        firstNumber = firstNumber + number
+        numberLabel.text = String(firstNumber)
     }
 
     @IBAction func zeroTapped(_ sender: Any) {
@@ -76,66 +62,31 @@ class ViewController: UIViewController {
     }
 
     @IBAction func plusTapped(_ sender: Any) {
-        operations = "+"
-        isNewOperation = true
-        firstNumber = Double(numberLabel.text!)
     }
 
     @IBAction func minusTapped(_ sender: Any) {
-        operations = "-"
-        isNewOperation = true
-        firstNumber = Double(numberLabel.text!)
     }
 
     @IBAction func multipTapped(_ sender: Any) {
-        operations = "*"
-        isNewOperation = true
-        firstNumber = Double(numberLabel.text!)
     }
 
     @IBAction func divideTapped(_ sender: Any) {
-        operations = "/"
-        isNewOperation = true
-        firstNumber = Double(numberLabel.text!)
     }
 
     @IBAction func percentTapped(_ sender: Any) {
-        isNewOperation = true
-        firstNumber = Double(numberLabel.text!)
-        firstNumber = (firstNumber! / 100)
-        numberLabel.text = String(firstNumber!)
     }
 
     @IBAction func integerTapped(_ sender: Any) {
-
     }
 
     @IBAction func acTapped(_ sender: Any) {
-        numberLabel.text = "0"
-        isNewOperation = true
     }
 
     @IBAction func commaTapped(_ sender: Any) {
-        addNumberToInput(number: ",")
     }
 
     @IBAction func equalsTapped(_ sender: Any) {
-        secondNumber = Double(numberLabel.text!)
-        switch operations {
-        case "/":
-            result = (firstNumber! / secondNumber!)
-        case "*":
-            result = (firstNumber! * secondNumber!)
-        case "-":
-            result = (firstNumber! - secondNumber!)
-        case "+":
-            result = (firstNumber! + secondNumber!)
-        default:
-            result = 0
-
-        }
-        numberLabel.text = String(result!)
-        isNewOperation = true
     }
 
 }
+
